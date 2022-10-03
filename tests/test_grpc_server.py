@@ -1,8 +1,6 @@
 from unittest.mock import MagicMock
 from protos.getMeterReadings_pb2 import GetMeterReadingsRequest,GetMeterReadingsResponse
-from protos.getMeterReadings_pb2_grpc import GetMeterReadingsServicer
 import server
-from services.meter_readings import MeterReadingsFromCSV 
 
 
 class TestServer:

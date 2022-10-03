@@ -24,3 +24,7 @@ def get_meter_readings_from_grpc_server():
 
 if __name__ == "__main__":
     uvicorn.run("app:app", port=8200, reload=True)
+    
+    
+    
+    

@@ -1,0 +1,9 @@
+grpc
+grpcio
+grpc-tools
+fastapi
+pandas
+protobuf
+uvicorn
+pytest
+grpcio-testing

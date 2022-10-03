@@ -7,8 +7,7 @@ def test_run_endpoint():
     response = client.get("/meter-readings")
     data=response.json()
     readings=data["readings"]
-    readings_length=len(readings)
-    assert readings_length > 0
+    assert response.status_code == 200
 
 def test_data_is_fetched():
     response = client.get("/meter-readings")
@@ -23,3 +22,7 @@ def test_data_types():
     readings=data["readings"]
     assert type(readings[0]["time"])==str
     assert type(readings[0]["meterUsage"])==float
+    
+    
+    
+    
