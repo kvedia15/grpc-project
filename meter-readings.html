@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meter Readings</title>
+    <style>
+
+        body {
+        padding:10px;
+        }
+
+        td {
+        text-align: center;
+        }
+
+        table, th, td {
+        border: 2px solid;
+        padding: 10px;
+        
+    }
+
+    </style>
+</head>
+<body>
+    <h1 class="display-3">Meter Readings</h1>
+    <table class="table table-dark table-striped" id="meter-readings-table">
+        <thead>
+          <tr>
+            <th scope="col">Time</th>
+            <th scope="col">Meter Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+</body>
+<script>
+    async function fetchMeterReadingsAndPopulateTable(){
+        var myHeaders = new Headers();
+        var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+        };
+        response = await fetch("http://127.0.0.1:8200/meter-readings", requestOptions)
+        data = await response.json()
+        meterReadings= data["readings"]
+        document.querySelector("#meter-readings-table tbody").innerHTML = meterReadings.map(reading => `<tr><td>${reading["time"]}</td><td>${reading["meterUsage"]}</td></tr>`).join('')
+        
+    }
+
+    fetchMeterReadingsAndPopulateTable()
+
+</script>
+</html>

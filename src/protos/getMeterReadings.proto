@@ -1,0 +1,21 @@
+syntax = "proto3";
+package getmeterreadings;
+import "google/protobuf/timestamp.proto";
+
+service GetMeterReadings {
+    rpc GetData (GetMeterReadingsRequest) returns (GetMeterReadingsResponse) {}
+  }
+
+message GetMeterReadingsRequest {
+}
+
+message reading {
+    double meter_usage = 1 ;
+    google.protobuf.Timestamp time = 2 ;
+}
+
+message GetMeterReadingsResponse{
+    repeated reading readings = 1 ;
+}
+
+
